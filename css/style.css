@@ -40,7 +40,11 @@
 
 
 /* === 1. DESIGN SYSTEM === */
+body {
+    background-color: chartreuse; !important;
 
+ 
+}
 /* 1.1. Importações de Fontes */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;800&display=swap');
 
