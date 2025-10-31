@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animalândia - Adote, Doe, Seja Voluntário</title>
+
+    <meta name="description" content="Encontre seu novo melhor amigo. Adote um animal, doe para nossa causa ou seja um voluntário na ONG Animalândia.">
+    <meta name="keywords" content="adoção de animais, ong de animais, doar, voluntariado, adotar cachorro, adotar gato">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta property="og:title" content="Animalândia - Adote, Doe, Seja Voluntário">
+    <meta property="og:description" content="Ajude-nos a salvar vidas. Encontre seu novo companheiro.">
+    <meta property="og:image" content="https://seusite.com/images/og-image.jpg">
+    <meta property="og:url" content="https://seusite.com">
+    <meta property="og:type" content="website">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#inicio" class="logo">
+                <img src="img/animalandi.log.png" alt="Logo Animalândia">
+                Animalândia
+            </a>
+            
+            <input type="checkbox" id="menu-toggle-checkbox">
+            <label for="menu-toggle-checkbox" class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            
+            <nav class="nav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#inicio" class="active">Início</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#seja-voluntario">Seja Voluntário</a></li>
+                    <li><a href="#animais">Quero Adotar</a></li>
+                    <li><a href="#login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="inicio" class="hero">
+            <div class="container">
+                <h1>Encontre seu novo melhor amigo</h1>
+                <p>Milhares de animais esperam por um lar. Adote com amor.</p>
+                <a href="#animais" class="btn btn-primary">Quero Adotar</a>
+            </div> </section>
+
+        <section id="sobre">
+            <div class="container">
+                <h2>Sobre Nós</h2>
+                <p>A Animalândia é uma ONG dedicada a resgatar, reabilitar e encontrar lares amorosos para animais em situação de maus tratos, desde 2002, lutando contra a crueldade e o abandono, sempre contando com a ajuda de voluntários.</p>
+            </div>
+        </section>
+
+        <section id="seja-voluntario">
+            <div class="container">
+                <h2>Seja voluntário</h2>
+                <p>Preencha seus dados abaixo para se tornar um voluntário.</p>
+
+                <div id="form-voluntario-msg" style="margin-bottom: var(--space-3);"></div>
+
+                <form id="form-voluntario" action="/processar-voluntario" method="post" novalidate>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-nascimento">Data de Nascimento:</label>
+                        <input type="date" id="data-nascimento" name="data_nascimento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-voluntario">E-mail:</label>
+                        <input type="email" id="email-voluntario" name="email" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço (Rua, Número, Bairro):</label>
+                        <input type="text" id="endereco" name="endereco" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" name="cep" placeholder="00000-000" pattern="\d{5}-\d{3}" maxlength="9" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade-estado">Estado e Cidade:</label>
+                        <input type="text" id="cidade-estado" name="cidade_estado" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Cadastro</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="animais">
+            <div class="container">
+                <h2>Conheça Nossos Amigos</h2>
+                
+                <div id="animal-gallery-container" class="gallery">
+                    </div>
+                
+            </div> </section> <section id="doar">
+            <div class="container">
+                <h2>Como Doar</h2>
+                <p style="text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: var(--space-4);">
+                    Sua doação é fundamental. Escolha a melhor forma de ajudar:
+                </p>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body" style="text-align: center;">
+                                <h3>PIX (Mais Rápido)</h3>
+                                <p>Use o QR Code ou nossa chave CNPJ.</p>
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00.123.456/0001-78" 
+                                     alt="QR Code para doação via PIX" 
+                                     style="width: 200px; height: 200px; margin: var(--space-2) auto; display: block; border: 1px solid #eee;">
+                                
+                                <strong>Nossa Chave (CNPJ):</strong>
+                                <p id="chave-pix" style="font-weight: 600; font-size: 1.1rem; background-color: var(--color-neutral-gray-100); padding: var(--space-1); border-radius: var(--border-radius); margin-top: var(--space-1);">
+                                    00.123.456/0001-78
+                                </p>
+                                <button id="btn-copiar-pix" type="button" class="btn btn-secondary" style="width: 100%;">Copiar Chave</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Transferência (TED/DOC)</h3>
+                                <p>Faça um depósito em nossa conta corrente:</p>
+                                <ul style="list-style: none; padding-left: 0; margin-top: var(--space-2);">
+                                    <li style="margin-bottom: var(--space-1);"><strong>Banco:</strong> Banco Exemplo S.A. (001)</li>
+                                    <li style="margin-bottom: var(--space-1);"><strong>Agência:</strong> 1234</li>
+                                    <li style="margin-bottom: var(--space-1);"><strong>Conta Corrente:</strong> 56789-0</li>
+                                    <li style="margin-bottom: var(--space-1);"><strong>CNPJ:</strong> 00.123.456/0001-78</li>
+                                    <li style="margin-bottom: var(--space-1);"><strong>Favorecido:</strong> ONG Animalândia</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body" style="text-align: center;">
+                                <h3>Cartão de Crédito</h3>
+                                <p>Doe com segurança. Você pode doar uma única vez ou se tornar um doador mensal.</p>
+                                <a href="https://pagseguro.uol.com.br/doacao" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%; margin: var(--space-3) 0;">
+                                    Doar com Cartão
+                                </a>
+                                <p style="font-size: var(--fs-sm); color: var(--color-neutral-gray-500);">
+                                    Você será redirecionado para um ambiente 100% seguro.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> </div> </section>
+
+        <section id="login">
+            <div class="container">
+                <div class="container-login">
+                    <h3>Acesse sua conta</h3>
+                    <form action="processar-login" method="post">
+                        <div class="form-group">
+                            <label for="email-login">E-mail:</label>
+                            <input type="email" id="email-login" name="usuario_email" required> 
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha:</label>
+                            <input type="password" id="senha" name="usuario_senha" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                    </form>
+                    <p>Não tem uma conta? <a href="#seja-voluntario">Registre-se aqui</a></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Animalândia. Todos os direitos reservados.</p>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no Instagram">Instagram</a>
+        </div>
+    </footer>
+    
+    <script src="js/script.js"></script>
+    
+    <div class="modal-overlay"></div>
+    
+</body>
+</html>
