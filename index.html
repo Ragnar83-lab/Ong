@@ -20,8 +20,7 @@
 
     <header class="header">
         <div class="container">
-            <a href="#inicio" class="logo">
-                <img src="img/animalandi.log.png" alt="Logo Animalândia">
+            <a href="index.html" class="logo"> <img src="img/animalandi.log.png" alt="Logo Animalândia">
                 Animalândia
             </a>
             
@@ -33,11 +32,9 @@
             
             <nav class="nav" aria-label="Navegação principal">
                 <ul>
-                    <li><a href="#inicio" class="active">Início</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#seja-voluntario">Seja Voluntário</a></li>
-                    <li><a href="#animais">Quero Adotar</a></li>
-                    <li><a href="#login">Login</a></li>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
                 </ul>
             </nav>
         </div>
@@ -58,77 +55,35 @@
                 <h2>Sobre Nós</h2>
                 <p>A Animalândia é uma ONG dedicada a resgatar, reabilitar e encontrar lares amorosos para animais em situação de maus tratos, desde 2002, lutando contra a crueldade e o abandono, sempre contando com a ajuda de voluntários.</p>
             </div>
-            <div class="container">
-
-  <div class="card">
-    <picture>
-      <source srcset="img/caramelo.avif" type="image/avif">
-      <source srcset="img/caramelo.webp" type="image/webp">
-      <img src="img/caramelo.jpg" alt="Rex, 1 ano, Macho, porte médio. Muito brincalhão." loading="lazy">
-    </picture>
-    <h3>Bob</h3>
-    <p>Macho, 2 anos, porte médio. Muito esperto!</p>
-  </div>
-
-  <div class="card">
-    <picture>
-      <source srcset="img/mia.avif" type="image/avif">
-      <source srcset="img/mia.webp" type="image/webp">
-      <img src="img/mia.jpg" alt="Mia, uma gata siamesa" loading="lazy">
-    </picture>
-    <h3>Mia</h3>
-    <p>Uma linda gata siamesa, muito calma e carinhosa.</p>
-  </div>
-
-  <div class="card">
-    <picture>
-      <source srcset="img/frajola.avif" type="image/avif">
-      <source srcset="img/frajola.webp" type="image/webp">
-      <img src="img/frajola.png" alt="Frajola, um gato preto e branco" loading="lazy">
-    </picture>
-    <h3>Frajola</h3>
-    <p>Gato preto e branco, muito ativo e adora brincar.</p>
-  </div>
-
-  <div class="card">
-    <picture>
-      <img src="img/fotos de gatos fofos (15).jpg" alt="Bil,macho,2 anos,muito carinhoso e brincalhão" loading="lazy">
-    </picture>
-    <h3>(Bil)</h3>
-    <p>macho,2 anos,muito carinhoso e brincalhão</p>
-  </div>
-
-</div> ```
-
-
-                
-        </div>
         </section>
 
-        <section id="seja-voluntario">
+        <section id="animais">
             <div class="container">
-                <h2>Seja voluntário</h2>
-                <p>Preencha seus dados abaixo para se tornar um voluntário.</p>
+                <h2>Conheça Nossos Amigos</h2>
+                <div class="gallery">
+                    <div class="card">
+                        <picture>
+                            <source srcset="img/caramelo.avif" type="image/avif">
+                            <source srcset="img/caramelo.webp" type="image/webp">
+                            <img src="img/caramelo.jpg" alt="Bob, 2 anos, Macho, porte médio. Muito esperto!" loading="lazy">
+                        </picture>
+                        <h3>Bob</h3>
+                        <p>Macho, 2 anos, porte médio. Muito esperto!</p>
+                    </div>
 
-                <div id="form-voluntario-msg"></div>
+                    <div class="card">
+                        <picture>
+                            <source srcset="img/mia.avif" type="image/avif">
+                            <source srcset="img/mia.webp" type="image/webp">
+                            <img src="img/mia.jpg" alt="Mia, uma gata siamesa" loading="lazy">
+                        </picture>
+                        <h3>Mia</h3>
+                        <p>Uma linda gata siamesa, muito calma e carinhosa.</p>
+                    </div>
 
-                <form id="form-voluntario" action="/processar-voluntario" method="post" novate>
-                    <div class="form-group">
-                        <label for="nome">Nome Completo:</label>
-                        <input type="text" id="nome" name="nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="data-nascimento">Data de Nascimento:</label>
-                        <input type="date" id="data-nascimento" name="data_nascimento" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email-voluntario">E-mail:</label>
-                        <input type="email" id="email-voluntario" name="email" required>
-                    </div>
-                     <div class="form-group">
-                        <label for="telefone">Telefone:</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="endereco">Endereço (Rua, Número, Bairro):</label>
-                        <input type
+                    <div class="card">
+                        <picture>
+                            <source srcset="img/frajola.avif" type="image/avif">
+                            <source srcset="img/frajola.webp" type="image/webp">
+                            <img src="img/frajola.png" alt="Frajola, um gato preto e branco" loading="lazy">
+                        </picture>
