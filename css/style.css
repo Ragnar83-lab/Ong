@@ -1,0 +1,69 @@
+// js/form.js
+
+// Espera o documento carregar para garantir que os elementos existam
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- 1. APLICAÇÃO DAS MÁSCARAS ---
+    
+    // Máscara para CPF
+    const cpfInput = document.getElementById('cpf');
+    if (cpfInput) {
+        IMask(cpfInput, {
+            mask: '000.000.000-00'
+        });
+    }
+
+    // Máscara para Telefone
+    const telInput = document.getElementById('telefone');
+    if (telInput) {
+        IMask(telInput, {
+            mask: '(00) 00000-0000'
+        });
+    }
+
+    // Máscara para CEP
+    const cepInput = document.getElementById('cep');
+    if (cepInput) {
+        IMask(cepInput, {
+            mask: '00000-000'
+        });
+    }
+
+
+    // --- 2. INTERATIVIDADE DA SEÇÃO DE DOAÇÃO ---
+
+    // Seleciona todos os botões de rádio da doação
+    const radioMetodos = document.querySelectorAll('input[name="metodo_doacao"]');
+    
+    // Seleciona as 'divs' de detalhes
+    const detalhesPix = document.getElementById('detalhes-pix');
+    const detalhesCartao = document.getElementById('detalhes-cartao');
+    const detalhesTransf = document.getElementById('detalhes-transferencia');
+    
+    // Função para esconder todas as 'divs' de detalhes
+    function esconderTodosDetalhes() {
+        if (detalhesPix) detalhesPix.classList.add('hidden');
+        if (detalhesCartao) detalhesCartao.classList.add('hidden');
+        if (detalhesTransf) detalhesTransf.classList.add('hidden');
+    }
+
+    // Adiciona um "ouvinte" para cada botão de rádio
+    radioMetodos.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            // Primeiro, esconde todos
+            esconderTodosDetalhes();
+
+            // Depois, mostra o selecionado
+            if (this.checked) {
+                if (this.value === 'pix' && detalhesPix) {
+                    detalhesPix.classList.remove('hidden');
+                } else if (this.value === 'cartao' && detalhesCartao) {
+                    detalhesCartao.classList.remove('hidden');
+                } else if (this.value === 'transferencia' && detalhesTransf) {
+                    detalhesTransf.classList.remove('hidden');
+                }
+            }
+        });
+    });
+
+});
