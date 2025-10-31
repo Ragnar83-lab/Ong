@@ -199,3 +199,98 @@ main {
 .logo {
     font-family: var(--font-family-heading);
     font-size: var;}
+
+    /* --- Estilos Gerais da Página --- */
+body {
+  font-family: Arial, sans-serif; /* Uma fonte limpa e legível */
+  background-color: #f4f4f4; /* Um cinza bem claro para o fundo */
+  color: #333; /* Cor do texto principal */
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Container dos Animais --- */
+/* Usamos CSS Grid para o layout. 
+  É a forma mais moderna e flexível de criar galerias.
+*/
+.container {
+  display: grid;
+  /* A mágica da responsividade acontece aqui:
+    - 'repeat(auto-fit, ...)' : Cria quantas colunas couberem na tela.
+    - 'minmax(280px, 1fr)' : Diz que cada coluna deve ter NO MÍNIMO 280px
+      e pode crescer (1fr) para ocupar o espaço disponível.
+  */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; /* Espaço entre os cards */
+  padding: 24px; /* Espaço nas laterais do container */
+  max-width: 1200px; /* Limita a largura máxima no centro */
+  margin: 0 auto; /* Centraliza o container na página */
+}
+
+/* --- Estilo Individual do Card --- */
+.card {
+  background-color: #ffffff; /* Fundo branco para o card */
+  border-radius: 12px; /* Cantos arredondados */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  overflow: hidden; /* Garante que a imagem não "vaze" dos cantos arredondados */
+  display: flex; /* Ajuda a organizar o conteúdo interno */
+  flex-direction: column; /* Organiza os itens em coluna (imagem, h3, p) */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação suave */
+}
+
+/* --- Efeito de Hover (passar o mouse) --- */
+.card:hover {
+  transform: translateY(-5px); /* Levanta o card levemente */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Sombra um pouco mais forte */
+}
+
+/* --- Estilo da Imagem do Card --- */
+.card img {
+  width: 100%; /* Imagem ocupa 100% da largura do card */
+  height: 200px; /* ALTURA FIXA: Isso é importante! */
+  object-fit: cover; /* Esta é a parte mais importante para as imagens!
+                      'cover' faz a imagem preencher o espaço de 200px
+                      sem esticar ou achatar. Ela corta o excesso.
+                     */
+  display: block; /* Remove qualquer espaço extra abaixo da imagem */
+}
+
+/* --- Estilo do Título (Nome do Animal) --- */
+.card h3 {
+  font-size: 1.5rem; /* Tamanho do título (24px) */
+  font-weight: 700; /* Negrito */
+  color: #222;
+  margin: 16px 20px 8px 20px; /* Espaçamento (topo, lados, baixo) */
+}
+
+/* --- Estilo da Descrição --- */
+.card p {
+  font-size: 1rem; /* Tamanho do texto (16px) */
+  line-height: 1.5; /* Espaçamento entre as linhas */
+  color: #555;
+  margin: 0 20px 20px 20px; /* Espaçamento (topo, lados, baixo) */
+  flex-grow: 1; /* Garante que o parágrafo "empurre" o botão (se houver) para baixo */
+}
+
+/* OPCIONAL: Se você quiser adicionar um botão de "Adotar" 
+   (Você pode adicionar um <a href="#" class="btn-adotar">Quero adotar!</a> 
+   dentro do .card, abaixo do <p>)
+*/
+/*
+.btn-adotar {
+  display: block;
+  background-color: #007bff; 
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 20px;
+  margin: 0 20px 20px 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-adotar:hover {
+  background-color: #0056b3;
+}
+*/
