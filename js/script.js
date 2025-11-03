@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Função assíncrona para buscar dados na API
     async function buscarEndereco(cep) {
-        const url = https://viacep.com.br/ws/${cep}/json/;
+        const url = `https://viacep.com.br/ws/${cep}/json/`;
 
         try {
             // 1. Tenta buscar os dados
