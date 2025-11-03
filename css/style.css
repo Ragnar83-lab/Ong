@@ -1,102 +1,57 @@
-// js/form.js
+/*
+Design System CSS for Animalândia
+File: css/design-system.css
 
-// Espera o documento carregar para garantir que os elementos existam
-document.addEventListener('DOMContentLoaded', function() {
-    
-    const cpfInput = document.getElementById('cpf');
-    if (cpfInput) {
-        IMask(cpfInput, { mask: '000.000.000-00' });
-    }
+Includes:
+- CSS custom properties (colors, typography, spacing)
+- Grid system (12 columns) + 5 breakpoints
+- Utility layout helpers (container, grid, flex)
+- Components: header/nav (hamburger + dropdown), buttons, cards, forms, alerts, toasts, modals, badges
+- Basic accessibility & focus styles
 
-    const telInput = document.getElementById('telefone');
-    if (telInput) {
-        IMask(telInput, { mask: '(00) 00000-0000' });
-    }
+Suggested project structure (place this file at css/design-system.css):
+/
+├─ index.html
+├─ projetos.html
+├─ cadastro.html
+├─ login.html
+├─ css/
+│  ├─ design-system.css    <-- this file
+│  └─ style.css            <-- page-specific overrides (optional)
+├─ js/
+│  └─ form.js
+├─ img/
+│  └─ ...images...
+└─ README.md
 
-    const cepInput = document.getElementById('cep');
-    if (cepInput) {
-        IMask(cepInput, { mask: '00000-000' });
-    }
+README: make repo public on GitHub and push all files. Include images in img/ and HTML in root.
+*/
 
-    // --- 2. INTERATIVIDADE DA SEÇÃO DE DOAÇÃO ---
+:root{
+  /* --- Palette (min 8 colors) --- */
+  --color-primary-600: #0077b6;
+  --color-primary-500: #0096c7;
+  --color-primary-400: #00b4d8;
 
-    const radioMetodos = document.querySelectorAll('input[name="metodo_doacao"]');
-    const detalhesPix = document.getElementById('detalhes-pix');
-    const detalhesCartao = document.getElementById('detalhes-cartao');
-    const detalhesTransf = document.getElementById('detalhes-transferencia');
-    
-    function esconderTodosDetalhes() {
-        if (detalhesPix) detalhesPix.classList.add('hidden');
-        if (detalhesCartao) detalhesCartao.classList.add('hidden');
-        if (detalhesTransf) detalhesTransf.classList.add('hidden');
-    }
+  --color-secondary-600: #ff7b00;
+  --color-secondary-500: #ff8800;
 
-    radioMetodos.forEach(function(radio) {
-        radio.addEventListener('change', function() {
-            esconderTodosDetalhes();
+  --color-neutral-900: #0b0b0b;
+  --color-neutral-700: #333333;
+  --color-neutral-500: #777777;
+  --color-neutral-300: #dddddd;
+  --color-neutral-100: #f7f7f7;
 
-            if (this.checked) {
-                if (this.value === 'pix' && detalhesPix) {
-                    detalhesPix.classList.remove('hidden');
-                } else if (this.value === 'cartao' && detalhesCartao) {
-                    detalhesCartao.classList.remove('hidden');
-                } else if (this.value === 'transferencia' && detalhesTransf) {
-                    detalhesTransf.classList.remove('hidden');
-                }
-            }
-        });
-    });
+  /* Accent / semantic */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --color-info: #17a2b8;
 
-    // --- 3. PREENCHIMENTO AUTOMÁTICO DE ENDEREÇO (API ViaCEP) ---
-    
-    if (cepInput) {
-        cepInput.addEventListener('blur', function() {
-            const cepLimpo = cepInput.value.replace(/\D/g, '');
+  /* Background/Surface */
+  --bg: var(--color-neutral-100);
+  --surface: #ffffff;
 
-            if (cepLimpo.length === 8) {
-                buscarEndereco(cepLimpo);
-            }
-        });
-    }
-
-    async function buscarEndereco(cep) {
-        const url = const url = `https://viacep.com.br/ws/${cep}/json/`;
-
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-
-            if (data.erro) {
-                alert('CEP não encontrado. Por favor, verifique e tente novamente.');
-                limpar
-
-    animation-timing-function:  preencherCamposEndereco(data) {
-        const enderecoInput = document.getElementById('endereco');
-        const cidadeInput = document.getElementById('cidade');
-        const estadoInput = document.getElementById('estado');
-            preencherCamposEndereco(data);
-                } else {
-                    alert("Erro ao buscar o endereço. Tente novamente mais tarde.");
-                }
-            } catch (error) {
-                console.error('Erro na requisição:', error);
-                alert('Erro ao buscar o endereço. Tente novamente mais tarde.');
-            }CamposEndereco();
-                return;
-            }
-        if (enderecoInput) enderecoInput.value = data.logradouro || '';
-        if (cidadeInput) cidadeInput.value = data.localidade || '';
-        if (estadoInput) estadoInput.value = data.uf || '';
-    }
-
-    function limparCamposEndereco() {
-        const enderecoInput = document.getElementById('endereco');
-        const cidadeInput = document.getElementById('cidade');
-        const estadoInput = document.getElementById('estado');
-
-        if (enderecoInput) enderecoInput.value = '';
-        if (cidadeInput) cidadeInput.value = '';
-        if (estadoInput) estadoInput.value = '';
-    }
-
-});
+  /* Typography scale (min 5 sizes) */
+  --font-family-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-size-xxl: 32px; /* display */
