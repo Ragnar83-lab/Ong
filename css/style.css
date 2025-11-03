@@ -5,55 +5,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- 1. APLICAÇÃO DAS MÁSCARAS ---
     
-    // Máscara para CPF
     const cpfInput = document.getElementById('cpf');
     if (cpfInput) {
-        IMask(cpfInput, {
-            mask: '000.000.000-00'
-        });
+        IMask(cpfInput, { mask: '000.000.000-00' });
     }
 
-    // Máscara para Telefone
     const telInput = document.getElementById('telefone');
     if (telInput) {
-        IMask(telInput, {
-            mask: '(00) 00000-0000'
-        });
+        IMask(telInput, { mask: '(00) 00000-0000' });
     }
 
-    // Máscara para CEP
     const cepInput = document.getElementById('cep');
     if (cepInput) {
-        IMask(cepInput, {
-            mask: '00000-000'
-        });
+        IMask(cepInput, { mask: '00000-000' });
     }
-
 
     // --- 2. INTERATIVIDADE DA SEÇÃO DE DOAÇÃO ---
 
-    // Seleciona todos os botões de rádio da doação
     const radioMetodos = document.querySelectorAll('input[name="metodo_doacao"]');
-    
-    // Seleciona as 'divs' de detalhes
     const detalhesPix = document.getElementById('detalhes-pix');
     const detalhesCartao = document.getElementById('detalhes-cartao');
     const detalhesTransf = document.getElementById('detalhes-transferencia');
     
-    // Função para esconder todas as 'divs' de detalhes
     function esconderTodosDetalhes() {
         if (detalhesPix) detalhesPix.classList.add('hidden');
         if (detalhesCartao) detalhesCartao.classList.add('hidden');
         if (detalhesTransf) detalhesTransf.classList.add('hidden');
     }
 
-    // Adiciona um "ouvinte" para cada botão de rádio
     radioMetodos.forEach(function(radio) {
         radio.addEventListener('change', function() {
-            // Primeiro, esconde todos
             esconderTodosDetalhes();
 
-            // Depois, mostra o selecionado
             if (this.checked) {
                 if (this.value === 'pix' && detalhesPix) {
                     detalhesPix.classList.remove('hidden');
@@ -65,5 +48,50 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // --- 3. PREENCHIMENTO AUTOMÁTICO DE ENDEREÇO (API ViaCEP) ---
+    
+    if (cepInput) {
+        cepInput.addEventListener('blur', function() {
+            const cepLimpo = cepInput.value.replace(/\D/g, '');
+
+            if (cepLimpo.length === 8) {
+                buscarEndereco(cepLimpo);
+            }
+        });
+    }
+
+    async function buscarEndereco(cep) {
+        // Corrigido: URL precisa estar entre aspas e com template string
+        const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.erro) {
+                alert('CEP não encontrado. Por favor, verifique e tente novamente.');
+                limpar
+
+    function preencherCamposEndereco(data) {
+        const enderecoInput = document.getElementById('endereco');
+        const cidadeInput = document.getElementById('cidade');
+        const estadoInput = document.getElementById('estado');
+
+        // Corrigido: propriedade correta é 'logradouro', não 'logouro'
+        if (enderecoInput) enderecoInput.value = data.logradouro || '';
+        if (cidadeInput) cidadeInput.value = data.localidade || '';
+        if (estadoInput) estadoInput.value = data.uf || '';
+    }
+
+    function limparCamposEndereco() {
+        const enderecoInput = document.getElementById('endereco');
+        const cidadeInput = document.getElementById('cidade');
+        const estadoInput = document.getElementById('estado');
+
+        if (enderecoInput) enderecoInput.value = '';
+        if (cidadeInput) cidadeInput.value = '';
+        if (estadoInput) estadoInput.value = '';
+    }
 
 });
