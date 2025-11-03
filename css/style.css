@@ -2,12 +2,14 @@
 Design System CSS for Animalândia
 File: css/design-system.css
 
+
 Includes:
 - CSS custom properties (colors, typography, spacing)
 - Grid system (12 columns) + 5 breakpoints
 - Utility layout helpers (container, grid, flex)
 - Components: header/nav (hamburger + dropdown), buttons, cards, forms, alerts, toasts, modals, badges
 - Basic accessibility & focus styles
+
 
 Suggested project structure (place this file at css/design-system.css):
 /
@@ -16,42 +18,127 @@ Suggested project structure (place this file at css/design-system.css):
 ├─ cadastro.html
 ├─ login.html
 ├─ css/
-│  ├─ design-system.css    <-- this file
-│  └─ style.css            <-- page-specific overrides (optional)
+│ ├─ design-system.css <-- this file
+│ └─ style.css <-- page-specific overrides (optional)
 ├─ js/
-│  └─ form.js
+│ └─ form.js
 ├─ img/
-│  └─ ...images...
+│ └─ ...images...
 └─ README.md
+
 
 README: make repo public on GitHub and push all files. Include images in img/ and HTML in root.
 */
 
+
 :root{
-  /* --- Palette (min 8 colors) --- */
-  --color-primary-600: #0077b6;
-  --color-primary-500: #0096c7;
-  --color-primary-400: #00b4d8;
+/* --- Palette (min 8 colors) --- */
+--color-primary-600: #0077b6;
+--color-primary-500: #0096c7;
+--color-primary-400: #00b4d8;
 
-  --color-secondary-600: #ff7b00;
-  --color-secondary-500: #ff8800;
 
-  --color-neutral-900: #0b0b0b;
-  --color-neutral-700: #333333;
-  --color-neutral-500: #777777;
-  --color-neutral-300: #dddddd;
-  --color-neutral-100: #f7f7f7;
+--color-secondary-600: #ff7b00;
+--color-secondary-500: #ff8800;
 
-  /* Accent / semantic */
-  --color-success: #28a745;
-  --color-warning: #ffc107;
-  --color-danger: #dc3545;
-  --color-info: #17a2b8;
 
-  /* Background/Surface */
-  --bg: var(--color-neutral-100);
-  --surface: #ffffff;
+--color-neutral-900: #0b0b0b;
+--color-neutral-700: #333333;
+--color-neutral-500: #777777;
+--color-neutral-300: #dddddd;
+--color-neutral-100: #f7f7f7;
 
-  /* Typography scale (min 5 sizes) */
-  --font-family-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  --font-size-xxl: 32px; /* display */
+
+/* Accent / semantic */
+--color-success: #28a745;
+--color-warning: #ffc107;
+--color-danger: #dc3545;
+--color-info: #17a2b8;
+
+
+/* Background/Surface */
+--bg: var(--color-neutral-100);
+--surface: #ffffff;
+
+
+/* Typography scale (min 5 sizes) */
+--font-family-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+--font-size-xxl: 32px; /* display */
+--font-size-xl: 24px; /* heading */
+--font-size-lg: 18px; /* subheading */
+--font-size-md: 16px; /* body */
+--font-size-sm: 14px; /* small */
+--font-size-xs: 12px; /* caption */
+
+
+/* Spacing modular system */
+--space-8: 8px;
+--space-16: 16px;
+--space-24: 24px;
+--space-32: 32px;
+--space-40: 40px;
+--space-48: 48px;
+--space-56: 56px;
+--space-64: 64px;
+/* Border radius */
+.form-error{color:var(--color-danger);font-size:var(--font-size-sm);margin-top:6px}
+
+
+/* --- Alerts / Toasts / Modals --- */
+.alert{padding:var(--space-12);border-radius:8px;margin:var(--space-8) 0}
+.alert.info{background:rgba(23,162,184,0.08);border:1px solid rgba(23,162,184,0.15);color:var(--color-info)}
+.alert.success{background:rgba(40,167,69,0.06);border:1px solid rgba(40,167,69,0.12);color:var(--color-success)}
+.alert.warning{background:rgba(255,193,7,0.06);border:1px solid rgba(255,193,7,0.12);color:var(--color-warning)}
+.alert.danger{background:rgba(220,53,69,0.06);border:1px solid rgba(220,53,69,0.12);color:var(--color-danger)}
+
+
+/* Toast (positioned) */
+.toast-container{position:fixed;right:var(--space-16);bottom:var(--space-16);display:flex;flex-direction:column;gap:8px;z-index:9999}
+.toast{min-width:240px;padding:12px 16px;border-radius:8px;box-shadow:var(--shadow-md);background:var(--surface)}
+
+
+/* Modal (simple) */
+.modal-backdrop{position:fixed;inset:0;background:rgba(11,11,11,0.45);display:none;align-items:center;justify-content:center;z-index:9998}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--surface);padding:var(--space-24);border-radius:12px;max-width:720px;width:calc(100% - var(--space-32));box-shadow:var(--shadow-lg)}
+
+
+/* --- Badges & Tags --- */
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:var(--color-neutral-300);color:var(--color-neutral-900)}
+.tag{display:inline-flex;align-items:center;padding:6px 10px;border-radius:8px;font-size:13px;background:var(--color-primary-400);color:white}
+
+
+/* --- Cards grid for projects/animals --- */
+.gallery{display:grid;grid-template-columns:repeat(1,1fr);gap:var(--space-16)}
+@media (min-width:480px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.gallery{grid-template-columns:repeat(3,1fr)}}
+
+
+/* Specific utilities */
+.text-center{text-align:center}
+.mt-8{margin-top:var(--space-8)}
+.mt-16{margin-top:var(--space-16)}
+.mb-16{margin-bottom:var(--space-16)}
+.p-16{padding:var(--space-16)}
+
+
+/* Accessibility: focus visible */
+:focus{outline: none}
+:focus-visible{outline:3px solid rgba(0,119,182,0.18);outline-offset:2px}
+
+
+/* Small helper for visually-hidden text */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+
+/* --- Footer --- */
+.footer{background:var(--surface);padding:var(--space-24) 0;color:var(--color-neutral-700)}
+.footer .container{display:flex;flex-direction:column;gap:var(--space-16)}
+@media (min-width:768px){.footer .container{flex-direction:row;justify-content:space-between}}
+
+
+/* --- Small helpers for dropdown on desktop accessible via keyboard --- */
+[role="menu"]{list-style:none;margin:0;padding:0}
+
+
+/* End of design system CSS */
