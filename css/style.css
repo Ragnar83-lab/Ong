@@ -3,8 +3,6 @@
 // Espera o documento carregar para garantir que os elementos existam
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- 1. APLICAÇÃO DAS MÁSCARAS ---
-    
     const cpfInput = document.getElementById('cpf');
     if (cpfInput) {
         IMask(cpfInput, { mask: '000.000.000-00' });
@@ -62,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function buscarEndereco(cep) {
-        // Corrigido: URL precisa estar entre aspas e com template string
         const url = const url = `https://viacep.com.br/ws/${cep}/json/`;
 
         try {
@@ -73,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('CEP não encontrado. Por favor, verifique e tente novamente.');
                 limpar
 
-    function preencherCamposEndereco(data) {
+    animation-timing-function:  preencherCamposEndereco(data) {
         const enderecoInput = document.getElementById('endereco');
         const cidadeInput = document.getElementById('cidade');
         const estadoInput = document.getElementById('estado');
