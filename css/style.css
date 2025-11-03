@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function buscarEndereco(cep) {
         // Corrigido: URL precisa estar entre aspas e com template string
-        const url = `https://viacep.com.br/ws/${cep}/json/`;
+        const url = const url = `https://viacep.com.br/ws/${cep}/json/`;
 
         try {
             const response = await fetch(url);
@@ -77,8 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const enderecoInput = document.getElementById('endereco');
         const cidadeInput = document.getElementById('cidade');
         const estadoInput = document.getElementById('estado');
-
-        // Corrigido: propriedade correta é 'logradouro', não 'logouro'
+            preencherCamposEndereco(data);
+                } else {
+                    alert("Erro ao buscar o endereço. Tente novamente mais tarde.");
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error);
+                alert('Erro ao buscar o endereço. Tente novamente mais tarde.');
+            }CamposEndereco();
+                return;
+            }
         if (enderecoInput) enderecoInput.value = data.logradouro || '';
         if (cidadeInput) cidadeInput.value = data.localidade || '';
         if (estadoInput) estadoInput.value = data.uf || '';
